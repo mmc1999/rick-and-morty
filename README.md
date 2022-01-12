@@ -2,6 +2,11 @@
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
+
+SITIO WEB EN VIVO:  [Rick and morty](https://nervous-nobel-eaf6c9.netlify.app/).
+
+
+
 ## Available Scripts
 
 In the project directory, you can run:
