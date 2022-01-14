@@ -10,7 +10,9 @@ export default function ApiFetch() {
     const [backPage, setBackPage] = useState("");
     const [personaje, setPersonaje] = useState([]);
     const [url, setUrl] = useState("https://rickandmortyapi.com/api/character?page=1");
-
+    const [loading, setLoading] = useState(false)
+    const controller = new AbortController();
+    
     useEffect(() => {
         const getData = async (link) => {
             try {
@@ -53,6 +55,12 @@ export default function ApiFetch() {
 
     const handleSearch = (data) => {
         if(data === "") return
+        setLoading(true)
+        setTimeout(() => {
+            console.log("no viene nada");
+            setLoading(false);
+            controller.abort();
+        }, 4000);
         
         
         //esto lo hago para en la api pasarle el nombre con espacios
@@ -63,17 +71,17 @@ export default function ApiFetch() {
         setUrl(urlOriginal);
     }
     const handleGender = (data) => {
-        if(data === "") return
+        if(data === "nada") setUrl("https://rickandmortyapi.com/api/character?page=1")
         if(data == "male" || data == "female" || data == "genderless" || data == "unknown") {
-            setUrl(`https://rickandmortyapi.com/api/character/?gender=${data}`)
-        }
+            setUrl(`https://rickandmortyapi.com/api/character/?gender=${data}`);
+        } 
     }
     return(
         <>
             <Form handleSearch={handleSearch} handleGender={handleGender} />
             <section className='seccionCard'>
                 {personaje.length === 0 
-                    ? (<Loader />) 
+                    ? loading && <Loader /> 
                     : (personaje.map(el => 
                         <Card key={el.id} name={el.name} id={el.id} 
                             img={el.image} species={el.species} 
