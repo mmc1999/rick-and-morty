@@ -42,7 +42,7 @@
 @media all and (min-width:640px) {
     .divCard {
         flex-direction: row;
-        height: 200px;
+        height: 220px;
         width: 500px;
     }
     .imagenDelPersonaje {
