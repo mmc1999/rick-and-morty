@@ -1,18 +1,13 @@
-import React, { useEffect, useState } from 'react';
-import Button from './Button';
-import Card from './Card'
-import Form from './Form';
-import "./apiFetch.css";
-import Loader from "./Loader"
+import React, {useState, useEffect} from 'react'
 
-export default function ApiFetch() {
+const useApifetch = () => {
     const [nextPage, setNextPage] = useState("");
     const [backPage, setBackPage] = useState("");
     const [personaje, setPersonaje] = useState([]);
     const [url, setUrl] = useState("https://rickandmortyapi.com/api/character?page=1");
-    const [loading, setLoading] = useState(false)
     const controller = new AbortController();
-    
+    const [loading, setLoading] = useState(false)
+
     useEffect(() => {
         const getData = async (link) => {
             try {
@@ -43,15 +38,11 @@ export default function ApiFetch() {
             } 
         }
         getData(url);
-    }, [url])
+    }, [url]);
 
-
-    const loadMore = () => {
-        setUrl(nextPage)
-    }
-    const loadLess = () => {
-        setUrl(backPage);
-    }
+    const loadMore = () => setUrl(nextPage)
+    
+    const loadLess = () => setUrl(backPage);
 
     const handleSearch = (data) => {
         if(data === "") return
@@ -76,23 +67,10 @@ export default function ApiFetch() {
             setUrl(`https://rickandmortyapi.com/api/character/?gender=${data}`);
         } 
     }
-    return(
-        <>
-            <Form handleSearch={handleSearch} handleGender={handleGender} />
-            <section className='seccionCard'>
-                {personaje.length === 0 
-                    ? loading && <Loader /> 
-                    : (personaje.map(el => 
-                        <Card key={el.id} name={el.name} id={el.id} 
-                            img={el.image} species={el.species} 
-                            status={el.status} gender={el.gender} location={el.location}
-                        />
-                        
-                    ))
-                }
-            </section>
-            
-            <Button loadLess={loadLess} loadMore={loadMore} backPage={backPage} nextPage={nextPage} />
-        </>
-    )
+
+  return {
+    handleGender, handleSearch, loadLess, loadMore, personaje, nextPage, backPage, loading
+  }
 }
+
+export default useApifetch

@@ -1,0 +1,23 @@
+.main {
+    background-color: #24282F;
+}
+.seccionCard {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    flex-wrap: wrap;
+    gap: 20px;
+    padding: 20px;
+}
+
+@media all and (min-width:1000px) {
+    .seccionCard {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        justify-items: center;
+        gap: 20px;
+        padding: 50px 150px;
+        align-self: center;
+    }
+}

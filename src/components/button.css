@@ -11,8 +11,9 @@
     outline: none;
     border: none;
     color: black;
-    background-color: aquamarine;
+    background-color: rgb(255, 255, 255);
+    cursor: pointer;
 }
 .disabled {
-    background-color: rgba(127, 255, 212, 0.432);
+    background-color: rgba(215, 215, 215, 0.432);
 }

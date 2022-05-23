@@ -1,13 +1,17 @@
 .header {
-    background-color: #62a4ab;
+    position: relative;
+    background-color: #FFFFFF;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    z-index: 1;
+    height: 200px;
 }
 .titulo {
     margin: 0px;
     text-align: center;
+    z-index: 10;
 }
 .estilosGral {
     padding: 10px;
@@ -16,15 +20,10 @@
     outline: none;
 }
 .imagenRick {
+    z-index: 0;
+    position: absolute;
+    background-color: transparent;
+    height: 200px;
     max-width: 100%;
-    border-radius: 20px;
-    margin: 10px;
-}
-
-@media (min-width:500px) {
-    .imagenRick {
-        border-radius: 20px;
-        width: 400px;
-    }
-    
+    opacity: 0.5;
 }

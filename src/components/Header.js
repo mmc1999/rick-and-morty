@@ -1,6 +1,7 @@
 import React from 'react';
 import "./header.css";
-import img from "../imagen/rick-and-morty-1.jpg"
+import img from "../imagen/ricky.jfif";
+
 export default function Header() {
     return(
         <header className='header'>
