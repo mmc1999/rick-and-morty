@@ -11,7 +11,7 @@
     padding: 20px;
 }
 
-@media all and (min-width:1000px) {
+@media all and (min-width:1050px) {
     .seccionCard {
         display: grid;
         grid-template-columns: 1fr 1fr;
