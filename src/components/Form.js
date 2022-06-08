@@ -1,13 +1,14 @@
 import React, {useState} from 'react';
 import "./form.css";
 
-const initialForm = {
+let initialForm = {
     personaje:""
 }
 
 export default function Form({handleSearch, handleGender}) {
     const [form, setForm] = useState(initialForm);
     const [genero, setGenero] = useState("");
+    
     const handleChange = (e) => {
         setForm({
             ...form,
@@ -21,12 +22,12 @@ export default function Form({handleSearch, handleGender}) {
         handleSearch(form.personaje);
         setForm(initialForm);
     }
-    
+
     return(
         <form className='form' onSubmit={handleSubmit}>
             <input type="text" placeholder='Buscar Personaje' value={form.personaje} name='personaje' className='estilosGral' onChange={handleChange} />
             <select className='estilosGral' onChange={(e) => setGenero(e.target.value)}>
-                <option value="nada" defaultValue>Elegir genero</option>
+                <option value="" defaultValue>Elegir genero</option>
                 <option value="male">Male</option>
                 <option value="female">Female</option>
                 <option value="genderless">Genderless</option>

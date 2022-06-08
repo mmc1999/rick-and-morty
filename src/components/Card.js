@@ -1,12 +1,20 @@
 import React from 'react';
 import "./card.css";
 
-export default function Card({name, img, species, status, gender, location}) {
+export default function Card({el}) {
+    let {
+        name, 
+        image, 
+        species, 
+        status, 
+        gender, 
+        location
+    } = el
     return(
         <div className='divCard'>
-            {img=="" 
+            {image=="" 
                 ? "No tiene imagen" 
-                : <img src={img} alt={"Imagen de " + name} className='imagenDelPersonaje' />
+                : <img src={image} alt={"Imagen de " + name} className='imagenDelPersonaje' />
             }
             <section className='seccionSinImagen'>
                 <div className='nombreYId'>

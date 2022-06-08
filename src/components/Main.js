@@ -8,26 +8,23 @@ import useApifetch from '../hooks/useApifetch';
 
 export default function Main() {
     let {
-        handleGender, 
-        handleSearch, 
         loadLess, 
         loadMore, 
         personaje, 
         nextPage, 
         backPage,
-        loading
+        loading,
+        handleSearch, 
+        handleGender
     } = useApifetch();
-    
     return(
         <main className='main'>
-            <Form handleSearch={handleSearch} handleGender={handleGender} />
+            <Form handleSearch={handleSearch} handleGender={handleGender}/>
             <section className='seccionCard'>
                 {personaje.length === 0 
                     ? loading && <Loader /> 
                     : (personaje.map(el => 
-                        <Card key={el.id} name={el.name} id={el.id} 
-                            img={el.image} species={el.species} 
-                            status={el.status} gender={el.gender} location={el.location}
+                        <Card key={el.id} el={el}
                         />
                         
                     ))
